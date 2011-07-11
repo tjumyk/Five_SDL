@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Five", "Five\SDL_dev.vcxproj", "{E0D69D1A-F25D-48D9-AE2A-968F2C4758FC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Five_AI", "Five_AI\Five_AI.vcxproj", "{C03FC9BA-D6A1-436F-8111-2BA0384C1A22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D69D1A-F25D-48D9-AE2A-968F2C4758FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0D69D1A-F25D-48D9-AE2A-968F2C4758FC}.Debug|Win32.Build.0 = Debug|Win32
+		{E0D69D1A-F25D-48D9-AE2A-968F2C4758FC}.Release|Win32.ActiveCfg = Release|Win32
+		{E0D69D1A-F25D-48D9-AE2A-968F2C4758FC}.Release|Win32.Build.0 = Release|Win32
+		{C03FC9BA-D6A1-436F-8111-2BA0384C1A22}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C03FC9BA-D6A1-436F-8111-2BA0384C1A22}.Debug|Win32.Build.0 = Debug|Win32
+		{C03FC9BA-D6A1-436F-8111-2BA0384C1A22}.Release|Win32.ActiveCfg = Release|Win32
+		{C03FC9BA-D6A1-436F-8111-2BA0384C1A22}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
