@@ -1,7 +1,7 @@
 #include "chess.h"
+#include <windows.h>
 #include <fstream>
 #include <ctime>
-#include <ddraw.h>
 using namespace std;
 
 Chess::Chess(){
