@@ -1,8 +1,11 @@
 /********************************************************************************
-* 请在此函数中定义AI的操作，本函数会自动循环执行。								*
-* 输入数据：1.整型二维数组data：  保存了自动获取的棋盘数据（15*15）。			*
-*								  0表示无子，1表示自己的子，2表示敌方的子。		*
-* 			2.整型x，y：	      分别为AI选择走子的横、纵坐标(引用方式传递)。	*
+ * Please define the logic of your bot in this function. It will be called
+ * automatically for each move.
+ *
+ * @param data: current chess map (15*15). In each cell, 0 means "no piece",
+ *              1 means "your piece", 2 means "the opponent's piece"
+ * @param x: the horizontal position of your next move
+ * @param y: the vertical position of your next move
 *********************************************************************************/
 
 void AIwork(const int data[][15] , int & x, int & y){

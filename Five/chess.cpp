@@ -1,7 +1,9 @@
 #include "chess.h"
-#include <windows.h>
 #include <fstream>
 #include <ctime>
+#include <cstdlib>
+#include <iostream>
+
 using namespace std;
 
 Chess::Chess(){
@@ -25,7 +27,7 @@ Chess::Chess(){
 	fin.open("res/file/model.five");
 	modelNum = 0;
 	if(fin.fail()){
-		MessageBox(NULL,"无法读取模板文件model.five!",NULL,MB_OK|MB_ICONERROR);
+		cout << "Unable to read the model file: \"model.five\"!" << endl;
 		exit(1);
 	}
 	
@@ -244,13 +246,13 @@ void Chess::transformModel(int x, int y, int model[][10], int &tModelNum, int tM
 	int num = 1;
 	for(int i = 1; i < 8; i++,num++){
 		//create:
-		if(i == 4){//上下翻转
+		if(i == 4){//锟斤拷锟铰凤拷转
 			tModelX[num] = tempX;
 			tModelY[num] = tempY;
 			for(int ii = 0; ii < tempX;ii++)
 				for(int jj = 0; jj < tempY;jj++)
 					tModel[num][tempX - 1 - ii][jj] = temp[ii][jj];
-		}else{//逆时针旋转90度
+		}else{//锟斤拷时锟斤拷锟斤拷转90锟斤拷
 			tModelX[num] = tempY;
 			tModelY[num] = tempX;
 			for(int ii = 0; ii < tempX;ii++)

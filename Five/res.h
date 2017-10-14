@@ -1,11 +1,11 @@
 #ifndef RES_H
 #define RES_H
 
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_ttf.h"
-#include "SDL_mixer.h"
-#include "SDL_net.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_net.h"
 #include <string>
 
 //Screen attributes
@@ -19,7 +19,7 @@ const int FRAMES_PER_SECOND = 200;
 //The event structure
 SDL_Event event;
 
-//Basic surface
+SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
 #include "Game.h"
 

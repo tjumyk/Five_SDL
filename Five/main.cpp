@@ -1,7 +1,7 @@
 #ifdef MINGW
 #include "SDL/SDL.h"
 #else 
-#include "SDL.h"
+#include "SDL2/SDL.h"
 #endif
 
 #include "SDL_image.h"
@@ -44,7 +44,7 @@ int main( int argc, char* args[] )
 				quit = true;
 		}
 		handleDraw();
-		SDL_Flip(screen);
+        SDL_UpdateWindowSurface( window );
 		if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND )
 			SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
 	}

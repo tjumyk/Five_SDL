@@ -1,44 +1,40 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_ttf.h"
-#include "SDL_mixer.h"
-#include "SDL_net.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_net.h"
 #include <string>
 #include "res.h"
 
-SDL_Surface *load_image( std::string filename )
+SDL_Surface *load_image( std::string path )
 {
-	//The image that's loaded
-	SDL_Surface* loadedImage = NULL;
+    //The final optimized image
+    SDL_Surface* optimizedSurface = NULL;
 
-	//The optimized surface that will be used
-	SDL_Surface* optimizedImage = NULL;
+    //Load image at specified path
+    SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
+    if( loadedSurface == NULL )
+    {
+        printf( "Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+    }
+    else
+    {
+        //Convert surface to screen format
+        optimizedSurface = SDL_ConvertSurface( loadedSurface, screen->format, NULL );
+        if( optimizedSurface == NULL )
+        {
+            printf( "Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+        }
+        SDL_SetColorKey( optimizedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0xFF, 0, 0xFF ) );
 
-	//Load the image
-	loadedImage = IMG_Load( filename.c_str() );
+        //Get rid of old loaded surface
+        SDL_FreeSurface( loadedSurface );
+    }
 
-	//If the image loaded
-	if( loadedImage != NULL )
-	{
-		//Create an optimized surface
-		optimizedImage = SDL_DisplayFormat( loadedImage );
-
-		//Free the old surface
-		SDL_FreeSurface( loadedImage );
-
-		//If the surface was optimized
-		if( optimizedImage != NULL )
-		{
-			//Color key surface
-			SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, SDL_MapRGB( optimizedImage->format, 0xFF, 0, 0xFF ) );
-		}
-	}
-
-	//Return the optimized surface
-	return optimizedImage;
+    return optimizedSurface;
 }
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination,SDL_Rect* clip = NULL )
@@ -87,15 +83,15 @@ bool load_files()
 	//The color of the font
 	SDL_Color textColor = { 215, 215, 215 };
 	//Load text-surfaces
-	str_player = TTF_RenderText_Solid( font, "  Player", textColor );
-	str_innerAI = TTF_RenderText_Solid(font, "Inner AI" , textColor);
-	str_outerAI = TTF_RenderText_Solid(font, "Outer AI", textColor);
+	str_player = TTF_RenderText_Blended( font, "  Player", textColor );
+	str_innerAI = TTF_RenderText_Blended(font, "Inner AI" , textColor);
+	str_outerAI = TTF_RenderText_Blended(font, "Outer AI", textColor);
 
 	TTF_SetFontStyle(font, TTF_STYLE_BOLD);
 	textColor.r = textColor.g = textColor.b = 0;
-	str_black = TTF_RenderText_Solid(font,"Black Control",textColor);
+	str_black = TTF_RenderText_Blended(font,"Black Control",textColor);
 	textColor.r = textColor.g = textColor.b = 255;
-	str_white = TTF_RenderText_Solid(font,"White Control",textColor);
+	str_white = TTF_RenderText_Blended(font,"White Control",textColor);
 
 	//If there was an error in rendering the text
 	if( str_player == NULL || str_innerAI == NULL || str_outerAI == NULL)
@@ -182,7 +178,8 @@ bool init()
 	}
 
 	//Set up the screen
-	screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE );
+    window = SDL_CreateWindow("Five", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    screen = SDL_GetWindowSurface( window );
 
 	//If there was an error in setting up the screen
 	if( screen == NULL )
@@ -212,9 +209,6 @@ bool init()
 		return false;
 	}
 	isNetworkOpen = false;
-
-	//Set the window caption
-	SDL_WM_SetCaption( "Five",NULL );
 
 	//Initialize game kernel
 	game = new Game;
