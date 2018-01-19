@@ -37,7 +37,7 @@ bool setPlayer(int mX, int mY) {
         game->setPlayer(type = 2, (player = game->getPlayer(2) + 1) % 3);
     } else
         set = false;
-    if (set)
+    if (set) {
         if (player == 2 && game->getPlayer(3 - type) != 2) {
             if (!isNetworkOpen) {
                 server = SDLNet_TCP_Open(&ip);
@@ -57,6 +57,7 @@ bool setPlayer(int mX, int mY) {
                 client = NULL;
             }
         }
+    }
     return set;
 }
 
