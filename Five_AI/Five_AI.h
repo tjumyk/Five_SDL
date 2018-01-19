@@ -8,12 +8,12 @@
  * @param y: the vertical position of your next move
 *********************************************************************************/
 
-void AIwork(const int data[][15] , int & x, int & y){
-	for(int i = 0 ; i < 15; i++)
-		for(int j = 0 ; j < 15; j ++)
-			if(data[i][j] == 0){
-				x = i;
-				y = j;
-				return;
-			}
+void AIwork(const int data[][15], int &x, int &y) {
+    for (int i = 0; i < 15; i++)
+        for (int j = 0; j < 15; j++)
+            if (data[i][j] == 0) {
+                x = i;
+                y = j;
+                return;
+            }
 }

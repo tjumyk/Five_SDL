@@ -21,32 +21,33 @@ SDL_Event event;
 
 SDL_Window *window = NULL;
 SDL_Surface *screen = NULL;
+
 #include "Game.h"
 
 //The surfaces
-SDL_Surface * welcome = NULL;
-SDL_Surface * table = NULL;
-SDL_Surface * piece = NULL;
-SDL_Surface * blackWin = NULL;
-SDL_Surface * whiteWin = NULL;
-SDL_Surface * draw = NULL;
-SDL_Surface * button = NULL;
-SDL_Surface * hand = NULL;
-SDL_Surface * str_player = NULL;
-SDL_Surface * str_innerAI = NULL;
-SDL_Surface * str_outerAI = NULL;
-SDL_Surface * str_black = NULL;
-SDL_Surface * str_white = NULL;
+SDL_Surface *welcome = NULL;
+SDL_Surface *table = NULL;
+SDL_Surface *piece = NULL;
+SDL_Surface *blackWin = NULL;
+SDL_Surface *whiteWin = NULL;
+SDL_Surface *draw = NULL;
+SDL_Surface *button = NULL;
+SDL_Surface *hand = NULL;
+SDL_Surface *str_player = NULL;
+SDL_Surface *str_innerAI = NULL;
+SDL_Surface *str_outerAI = NULL;
+SDL_Surface *str_black = NULL;
+SDL_Surface *str_white = NULL;
 
 //The font that will be used
-TTF_Font * font;
+TTF_Font *font;
 
 //The music that will be played
-Mix_Music * music = NULL;
+Mix_Music *music = NULL;
 
 //The sound effects that will be used
-Mix_Chunk * drop = NULL;
-Mix_Chunk * bomb = NULL;
+Mix_Chunk *drop = NULL;
+Mix_Chunk *bomb = NULL;
 
 //SDL_net things
 bool isNetworkOpen;
@@ -55,6 +56,6 @@ TCPsocket server = NULL;
 TCPsocket client = NULL;
 
 //Game kernel
-Game * game = NULL;
+Game *game = NULL;
 
 #endif
