@@ -16,7 +16,7 @@ Chess::Chess() {
     for (int i = 0; i < 15; i++)
         for (int j = 0; j < 15; j++)
             piece[i][j] = 0;
-    lastPieceY = lastPieceY = -1;
+    lastPieceX = lastPieceY = -1;
     for (int win = 0; win < 5; win++) {
         winPieceX[win] = -1;
         winPieceY[win] = -1;
